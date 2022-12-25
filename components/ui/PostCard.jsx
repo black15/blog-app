@@ -14,10 +14,13 @@ const PostCard = ({post}) => {
     <div className='container mx-auto p-4 px-6 border-b'>
       <div className="flex flex-row items-center space-x-6 my-2">
         <Link className='flex flex-row md:items-center space-x-2' href={`/author/${post.author.name}`}>
-          <img
+          <Image
+            unoptimized
             className='h-8 w-8 rounded-full'
             src={post.author.image.url}
             alt='Author image'
+            width={100}
+            height={100}
           />
           <span className="inline text-gray-700 font-semibold">
             {post.author.name}
@@ -36,11 +39,13 @@ const PostCard = ({post}) => {
             {limit(post.excerpt)}...
           </p>
         </div>
-        <img
+        <Image
+          unoptimized
           className='rounded'
           src={post.image.url}
           alt='Image'
           width={220}
+          height={220}
         />
       </Link>
       <div className="flex flex-row items-center space-x-6">

@@ -4,12 +4,6 @@ import { Categories, Loader, PostPage, PostWidget } from '../../components'
 import { getPostBySlug, getPosts } from '../../services'
 
 const Post = ({ post }) => {
-  const router = useRouter()
-  const { slug } = router.query
-  if (router.isFallback) {
-    return <Loader />
-  }
-
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
@@ -17,7 +11,13 @@ const Post = ({ post }) => {
           setCategories([...categories, category.slug])
       })
   }, [post])
-  
+
+  const router = useRouter()
+  const { slug } = router.query
+  if (router.isFallback) {
+    return <Loader />
+  }
+
   return (
     <div className='container mx-auto p-4 px-6 border-b mt-20'>
       <div className='flex flex-col md:flex-row space-x-8'>

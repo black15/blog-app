@@ -1,5 +1,3 @@
-import matter from 'gray-matter';
-import { marked } from 'marked';
 import moment from 'moment';
 import React from 'react'
 import Image from 'next/image'
@@ -34,7 +32,8 @@ const PostDetails = ({post}) => {
         return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
       case 'image':
         return (
-          <img
+          <Image
+            unoptimized
             key={index}
             alt={obj.title}
             height={obj.height}
@@ -50,11 +49,14 @@ const PostDetails = ({post}) => {
   return (
     <>
       <div className="flex flex-row items-center space-x-6">
-        <img
-            className='h-16 w-16 rounded-full'
-            src={post.author.image.url}
-            alt='Author image'
-          />
+        <Image
+          unoptimized
+          className='h-16 w-16 rounded-full'
+          src={post.author.image.url}
+          alt='Author image'
+          width={100}
+          height={100}
+        />
         <div className="flex flex-col">
           <span className="inline text-gray-700">
             {post.author.name}
@@ -66,10 +68,13 @@ const PostDetails = ({post}) => {
       <div className="flex flex-col my-8">
         <h1 className="max-w-4xl text-3xl text-gray-800 font-semibold">{post.title}</h1>
         <span className="text-gray-600 text-sm mt-2">Last Update: {moment(post.updatedAt).format('MMM DD, YYYY')}</span>
-        <img
+        <Image
+          unoptimized
           className='w-full mt-6'
           src={post.image.url}
           alt='Post Image'
+          width={100}
+          height={100}
         />
         <div className='text-gray-800'>
           {post.content.raw.children.map((typeObj, index) => {

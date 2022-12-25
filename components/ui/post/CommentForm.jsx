@@ -53,7 +53,7 @@ const CommentForm = ({slug}) => {
   return (
     <div className="mb-4">
       <Modal commentRef={commentRef}/>
-      <form className="w-full max-w-xl bg-white rounded-lg px-4 pt-2 shadow-lg" method='post'>
+      <form className="w-full max-w-xl bg-white rounded-lg px-4 pt-2 shadow-lg" method='post' data-lpignore>
         <div className="flex flex-wrap -mx-3 mb-6">
            <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a comment</h2>
            <div className="w-full md:w-full px-3 mb-2 mt-2">
