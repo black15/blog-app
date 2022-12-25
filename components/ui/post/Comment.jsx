@@ -1,4 +1,5 @@
 import moment from 'moment'
+import { useEffect } from 'react';
 
 const Comment = ({comment}) => {
 

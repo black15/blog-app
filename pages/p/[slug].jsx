@@ -14,7 +14,7 @@ const Post = ({ post }) => {
           setCategories([...categories, category.slug])
       })
   }, [post])
-  console.log(post)
+  
   return (
     <div className='container mx-auto p-4 px-6 border-b mt-20'>
       <div className='flex flex-col md:flex-row space-x-8'>

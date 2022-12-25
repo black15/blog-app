@@ -5,7 +5,7 @@ import logo from '../public/img/DotBlog_domain_logo.png'
 const Header = () => {
 
   return (
-    <nav className="container mx-auto border-gray-200 z-10 px-2 bg-white sm:px-4 py-2.5 rounded shadow-lg mb-6 md:fixed md:right-16 md:top-0">
+    <nav className="container mx-auto border-gray-200 z-10 px-2 bg-white sm:px-4 py-2.5 rounded shadow-lg mb-6 md:fixed md:top-0 md:left-[50%] md:translate-x-[-50%]">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <Link href="/" className="flex items-center">
             <Image 

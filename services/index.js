@@ -63,7 +63,7 @@ export const getRecentPosts = async () => {
     }
   `
 
-  const data = await request(graphcms_api, query)
+  const data = await request("https://api-ca-central-1.hygraph.com/v2/clbuumc9u31s101us7xrq9ybc/master", query)
   return data.posts;
 }
 
@@ -154,4 +154,31 @@ export const getPostBySlug = async (slug) => {
   const data = await request(graphcms_api, query, {slug})
 
   return data.post;
+}
+
+export const getComments = async ({slug}) => {
+  const query = gql`
+    query Comments($slug: String!) {
+      comments(where: {post: { slug: $slug }}) {
+        id
+        name
+        comment
+        createdAt
+      }
+    } 
+  `
+  const data = await request('https://api-ca-central-1.hygraph.com/v2/clbuumc9u31s101us7xrq9ybc/master', query, {slug})
+
+  return data.comments;
+}
+
+export const submitComment = async (commentObj) => {
+  const req = await fetch('/api/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(commentObj),
+  })
+  return req.json()
 }
