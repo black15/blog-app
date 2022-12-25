@@ -1,11 +1,14 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { Categories, PostPage, PostWidget } from '../../components'
+import { Categories, Loader, PostPage, PostWidget } from '../../components'
 import { getPostBySlug, getPosts } from '../../services'
 
 const Post = ({ post }) => {
   const router = useRouter()
   const { slug } = router.query
+  if (router.isFallback) {
+    return <Loader />
+  }
 
   const [categories, setCategories] = useState([])
 
@@ -30,7 +33,7 @@ const Post = ({ post }) => {
   )
 }
 
-export default Post
+export default Post;
 
 
 export const getStaticProps = async ({ params }) => {
@@ -51,6 +54,6 @@ export const getStaticPaths = async () => {
   })
   return {
     paths,
-    fallback: false
+    fallback: true
   }
 }
